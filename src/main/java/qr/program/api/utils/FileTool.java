@@ -13,8 +13,8 @@ public class FileTool {
 
 
     public static void main(String[] args) {
-        String path = "/Users/qr/Downloads/排序算法";
-        clearFolderFilePrefix(path, "【黑马】数据结构与算法之经典排序算法【配套源码+笔记】 - ");
+        String path = "/Users/qr/Downloads/网络编程";
+        clearFolderFilePrefix(path, "从通信协议到Netty RPC框架打造的Java网络编程课，全面又深入，学它就够了 - ");
     }
 
     public static void listFolderFiles(String path) {
@@ -55,6 +55,7 @@ public class FileTool {
             String oldFilename = f.getName();
             String newFileName = oldFilename.replace(prefix, "");
             FileUtil.rename(f, newFileName, true);
+            System.out.printf("File: %s rename to %s\n", oldFilename, newFileName);
         }
         System.out.println("重命名完成");
     }
