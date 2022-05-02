@@ -25,6 +25,10 @@ public class FileTool {
             return;
         }
         File[] files = file.listFiles();
+        if (files == null || files.length == 0) {
+            System.out.println("Empty Folder");
+            return;
+        }
         for (File f : files) {
             System.out.println(f);
         }
