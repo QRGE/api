@@ -13,9 +13,9 @@ public class FileTool {
 
 
     public static void main(String[] args) {
-        String path = "/Users/qr/Downloads/vue";
+        String path = "/Users/qr/Downloads/SpringMVC";
         listFolderFiles(path);
-        clearFolderFilePrefix(path, 2);
+        clearFolderFilePrefix(path, 1);
     }
 
     public static void listFolderFiles(String path) {
@@ -36,7 +36,7 @@ public class FileTool {
     }
 
     /**
-     * 清楚文件中文件的前几个字符
+     * 去掉文件中文件名的前几个字符
      * @param path 文件夹路径
      * @param num 前几个字符
      */
@@ -48,10 +48,8 @@ public class FileTool {
             return;
         }
         File[] files = file.listFiles();
-        if (files == null || files.length == 0) {
-            System.out.println("Empty Folder");
-            return;
-        }
+        if (isEmptyFolder(files)) return;
+        assert files != null;
         for (File f : files) {
             String oldFilename = f.getName();
             String newFileName = oldFilename.substring(num-1);
@@ -59,6 +57,14 @@ public class FileTool {
             System.out.printf("File: %s rename to %s\n", oldFilename, newFileName);
         }
         System.out.println("重命名完成");
+    }
+
+    private static boolean isEmptyFolder(File[] files) {
+        if (files == null || files.length == 0) {
+            System.out.println("Empty Folder");
+            return true;
+        }
+        return false;
     }
 
     /**
